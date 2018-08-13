@@ -3,12 +3,12 @@ import java.io.*;
 import java.util.*;
 
 class part1 {
-	long studentid;
-	int ex,minor,fin,cl,pts,pct;
+	int total=0,ex,minor,fin,cl,pts,pct;
 	int[] assignments;
-	int total=0;
-	char Gr;
+	char grade;
 	String s;
+        long studentid;
+        
 	public int roundof(double x) {
 		int y =(int) Math.round(x);
 		return y;
@@ -33,11 +33,16 @@ class part1 {
 		double temp = ((double)pts*100)/420;
 		//System.out.println(temp);
 		pct = roundof(temp);
-		if(pct>=90)Gr = 'A';
-		else if(pct <= 89 && pct >= 78)Gr ='B';
-		else if(pct <= 77 && pct >= 62)Gr ='C';
-		else if(pct <= 61 && pct >= 46)Gr ='D';
-		else if(pct <= 45)Gr ='F';
+		if(pct>=90)
+                    grade = 'A';
+		else if(pct <= 89 && pct >= 78)
+                    grade ='B';
+		else if(pct <= 77 && pct >= 62)
+                    grade ='C';
+		else if(pct <= 61 && pct >= 46)
+                    grade ='D';
+		else if(pct <= 45)
+                    grade ='F';
 		
 	}
 
@@ -93,9 +98,9 @@ class part2 {
 						s += "  "+IntToString(s1.cl,2);
 						s += "  "+IntToString(s1.pts,3);
 						s += "   "+IntToString(s1.pct,2);
-						s += "   "+s1.Gr+" \n";
+						s += "   "+s1.grade+" \n";
 						avg += s1.pct;
-						switch (s1.Gr)
+						switch (s1.grade)
 						{
 						case 'A':counta++;break;
 						case 'B':countb++;break;
@@ -134,18 +139,19 @@ class part2 {
 public class CSX_358_HW1_16103025 {
 	public static void main(String[] args)throws FileNotFoundException{
 		File file = new File("HW1-data.txt");
-		Scanner sc = new Scanner(file);
-		String s;
+		Scanner scan = new Scanner(file);
 		List <part1> students = new ArrayList<part1>();
-		part1 student;
-		while(sc.hasNextLine())
+		
+                part1 student;
+                String s;
+		while(scan.hasNextLine())
 		{
 			student = new part1();
-			s = sc.nextLine();
+			s = scan.nextLine();
 			student.init(s);
 			students.add(student);
 		}
-		sc.close();
+		scan.close();
 		part2 fw = new part2();
 		fw.init(students);
 		System.out.println("DONE");
