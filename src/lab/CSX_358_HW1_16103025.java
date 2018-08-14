@@ -1,4 +1,4 @@
-package lab2;
+package lab;
 import java.io.*;
 import java.util.*;
 
@@ -8,7 +8,7 @@ class part1 {
 	char grade;
 	String s;
         long studentid;
-        
+       
 	public int roundof(double x) {
 		int y =(int) Math.round(x);
 		return y;
@@ -140,7 +140,8 @@ public class CSX_358_HW1_16103025 {
 	public static void main(String[] args)throws FileNotFoundException{
 		File file = new File("HW1-data.txt");
 		Scanner scan = new Scanner(file);
-		List <part1> students = new ArrayList<part1>();
+
+                ArrayList <part1> students = new ArrayList<part1>();
 		
                 part1 student;
                 String s;
